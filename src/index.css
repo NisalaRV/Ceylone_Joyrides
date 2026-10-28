@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-ivory font-sans text-midnight antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: #D5B477;
+    color: #101820;
+  }
+  :focus-visible {
+    outline: 2px solid #D5B477;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img {
+    -webkit-user-drag: none;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-bold uppercase tracking-[0.24em] text-gold-600;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-8 bg-current opacity-70;
+  }
+  .eyebrow-light {
+    @apply text-gold;
+  }
+
+  .display-xl {
+    @apply font-display text-[2.7rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl xl:text-[5.4rem];
+  }
+  .display-lg {
+    @apply font-display text-[2.1rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.4rem];
+  }
+  .display-md {
+    @apply font-display text-2xl font-semibold leading-snug sm:text-3xl;
+  }
+
+  /* Form controls */
+  .field-input {
+    @apply w-full rounded-xl border bg-white px-4 py-3.5 text-[0.95rem] text-midnight shadow-sm transition placeholder:text-stone/80 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40;
+    min-height: 3rem;
+  }
+  .field-input-dark {
+    @apply w-full rounded-xl border bg-white/5 px-4 py-3.5 text-[0.95rem] text-ivory transition placeholder:text-ivory/40 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40;
+    min-height: 3rem;
+  }
+  .field-input-dark option {
+    color: #101820;
+  }
+  input[type='date'] {
+    @apply appearance-none;
+  }
+  input[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+  .field-input-dark[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
